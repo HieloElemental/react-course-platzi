@@ -1,8 +1,8 @@
-const TodoItem = () => {
+const TodoItem = ({ text, isCompleted }) => {
   return (
     <li>
       <span>V</span>
-      <p>Cry with the Crying girl</p>
+      <p>{ text }</p>
       <span>X </span>
     </li>
   );

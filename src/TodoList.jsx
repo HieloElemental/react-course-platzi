@@ -1,7 +1,7 @@
-const TodoList = (props) => {
+const TodoList = ({ children }) => {
   return (
     <ul>
-      {props.children}
+      { children }
     </ul>
   )
 }

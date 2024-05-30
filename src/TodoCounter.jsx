@@ -1,7 +1,7 @@
-const TodoCounter = () => { 
+const TodoCounter = ({ completedTodos, totalTodos}) => { 
   return (
     <h1>
-      3 of 5 TODOS Completed
+      { completedTodos } of { totalTodos } TODOS Completed
     </h1>
   )
 }

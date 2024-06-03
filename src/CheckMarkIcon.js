@@ -9,7 +9,7 @@ export default function CheckMarkIcon({ fillColor }){
       width="16px"
       height="16px"
       viewBox="0 0 122.877 101.052"
-      enable-background="new 0 0 122.877 101.052"
+      enableBackground="new 0 0 122.877 101.052"
       fill={fillColor}
       >
       <g>

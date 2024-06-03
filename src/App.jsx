@@ -33,6 +33,8 @@ const App = () => {
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
+  const filteredTodos = todos.filter(todo => !!todo.text.toLowerCase().includes(searchValue.toLowerCase()));
+  console.log(filteredTodos);
 
   return (
     <div className="App">

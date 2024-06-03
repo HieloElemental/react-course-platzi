@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { TodoCounter } from './TodoCounter';
 import { TodoSearchForm } from './TodoSearchForm';
 import { TodoAddForm } from './TodoAddForm';
@@ -27,12 +28,24 @@ const defaultTodos = [
 ]
 
 const App = () => {
+  const [todos, setTodos] = useState(defaultTodos);
+  const [searchValue, setSearchValue] = useState('');
+
+  const completedTodos = todos.filter(todo => !!todo.completed).length;
+  const totalTodos = todos.length;
+
   return (
     <div className="App">
       <TodoAddForm />
 
-      <TodoCounter completedTodos={3} totalTodos={5}>
-        <TodoSearchForm />
+      <TodoCounter
+        completedTodos={completedTodos}
+        totalTodos={totalTodos}
+      >
+        <TodoSearchForm
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
         <TodoAddForm />
         <TodoCreateButton>Add Todo</TodoCreateButton>
       </TodoCounter>

@@ -1,8 +1,4 @@
-import { useState } from "react";
-
-const TodoSearchForm = () => { 
-  const [searchValue, setSearchValue] = useState('');
-
+const TodoSearchForm = ({searchValue, setSearchValue}) => { 
   return (
     <div className="TodoForm">
       <label htmlFor="">Search:</label>

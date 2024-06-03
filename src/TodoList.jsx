@@ -1,8 +1,11 @@
 const TodoList = ({ children }) => {
   return (
-    <ul>
-      { children }
-    </ul>
+    <div className="TodoList">
+      <h1>TODOS</h1>
+      <ul>
+        { children }
+      </ul>
+    </div>
   )
 }
 

@@ -1,8 +1,10 @@
 import { TodoCounter } from './TodoCounter';
-import { TodoForm } from './TodoForm';
+import { TodoSearchForm } from './TodoSearchForm';
+import { TodoAddForm } from './TodoAddForm';
 import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 import { TodoCreateButton } from './TodoCreateButton';
+
 import './App.css';
 
 const defaultTodos = [
@@ -26,17 +28,20 @@ const defaultTodos = [
 
 const App = () => {
   return (
-    <>
-       
-      <TodoCounter completedTodos={3} totalTodos={5}/>
-      <TodoForm />
+    <div className="App">
+      <TodoAddForm />
+
+      <TodoCounter completedTodos={3} totalTodos={5}>
+        <TodoSearchForm />
+        <TodoAddForm />
+        <TodoCreateButton>Add Todo</TodoCreateButton>
+      </TodoCounter>
 
       <TodoList>
         {defaultTodos.map(({ text, completed }, i) => <TodoItem key={i} text={text} isCompleted={completed} />) }
       </TodoList>
-
       <TodoCreateButton />
-    </>
+    </div>
   );
 }
 

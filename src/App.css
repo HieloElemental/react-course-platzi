@@ -1,38 +1,255 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #233553;
-  min-height: 100vh;
+  margin-top: 80px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  gap: 20px;
+  color: var(--color-magnolia);
+}
+
+.App > div {
+  background: rgba(var(--color-atomic-tangerine-rgb), 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+}
+
+.App .TodoCounter {
+  width: 60%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column;
+  padding: 32px 23px;
 }
 
-.App-link {
-  color: #97ca3f;
+.App .TodoCounter .graphic {
+  width: 100%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.App .graphic h1 {
+  display: block;
+  position: absolute;
+  text-align: center;
+  top: 105px;
+  max-width: 90%;
+  background: var(--color-midnight-blue);
+  color: var(--color-magnolia);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.App .graphic svg * {
+  transition: 1s ease-in-out;
+}
+
+.App .graphic svg .fg {
+  stroke: var(--color-royal-blue);
+}
+
+.App .TodoList {
+  width: 320px;
+  color: var(--color-magnolia);
+}
+
+.App .TodoList h1 {
+  font-weight: bolder;
+  font-size: 50px;
+  margin-top: 0;
+  margin-bottom: 40px;
+  text-align: center;
+  text-shadow: 2px 2px 2px var(--color-chocolate-cosmos);
+}
+
+.App .TodoList ul{
+  margin: 0;
+  padding: 0;
+}
+
+.App .TodoList .Todo {
+  background: rgba(var(--color-midnight-blue-rgb), .9);
+  list-style: none;
+  margin: 0 24px 20px;
+  color: var(--color-magnolia);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.App .TodoList .Todo.Todo-checked {
+  text-decoration: line-through;
+}
+
+.App .Icon {
+  border-radius: 50%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  fill: var(--color-magnolia);
+  cursor: pointer;
+}
+
+.App .CheckIcon {
+  background: #7da300;
+  position: relative;
+  left: -12px;
+}
+
+.App .Todo.Todo-checked .CheckIcon {
+  background: var(--color-atomic-tangerine);
+}
+
+.App .Todo.Todo-checked .CheckIcon svg {
+  fill: var(--color-chocolate-cosmos);
+}
+
+.App .TodoList .Icon svg {
+  fill: var(--color-magnolia);
+}
+
+.App .CloseIcon {
+  background: var(--color-chocolate-cosmos);
+  position: relative;
+  right: -12px;
+}
+
+.Icon.Button {
+  display: none;
+  background: var(--color-royal-blue);
+  box-shadow: 2px 2px 5px var(--color-chocolate-cosmos);
+  border: none;
+}
+
+.App .TodoAddForm .Icon.CloseIcon {
+  display: none;
+}
+
+.App > .TodoAddForm {
+  display: none;
+}
+
+.App .TodoCounter .Icon.Button {
+  display: flex;
+  border-radius: 10px;
+  color: var(--color-magnolia);
+  font-weight: bold;
+  font-size: 16px;
+  gap: 4px;
+  padding-right: 10px;
+}
+
+.Button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.TodoForm label {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--color-magnolia);
+}
+
+.TodoForm input {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  color: var(--color-magnolia);
+  border-bottom: 1px solid var(--color-atomic-tangerine);
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.TodoForm input:focus {
+  border-bottom: 1px solid var(--color-magnolia);
+  outline: none;
+  transition: 1s ease-in-out;
+}
+
+.TodoForm input::-webkit-input-placeholder {
+  color: rgba(var(--color-atomic-tangerine-rgb), .3);
+}
+
+.TodoAddForm .CloseIcon {
+  position: relative;
+  top: 0;
+  right: 0;
+}
+
+@media screen and (max-width: 580px) {
+  .App {
+    margin-top: 20px;
+    flex-flow: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  .App .TodoCounter h1 {
+    top: 90px;
+    max-width: 90%;
+  }
+
+  .App .TodoCounter {
+    width: 90%;
+  }
+
+  .App .TodoList {
+    width: 100%;
+  }
+
+  .Button svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .Icon.Button {
+    display: block;
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    bottom: 40px;
+    right: 10px;
+    z-index: 10;
+  }
+
+  .App .TodoCounter .Icon.Button {
+    display: none;
+  }
+
+  .App .TodoAddForm {
+    display: none;
+  }
+
+  .App > .TodoAddForm {
+    display: flex;
+    z-index: 60;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(var(--color-chocolate-cosmos-rgb), .5);
+    backdrop-filter: blur(5px);
+    top: 0;
+    left: -150vw;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 1s;
+  }
+
+  .App .TodoAddForm .Icon.CloseIcon {
+    display: flex;
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    padding: 20px;
+
   }
 }

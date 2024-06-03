@@ -53,7 +53,7 @@ const App = () => {
       </TodoCounter>
 
       <TodoList>
-        {defaultTodos.map(({ text, completed }, i) => <TodoItem key={i} text={text} isCompleted={completed} />) }
+        {filteredTodos.map(({ text, completed }, i) => <TodoItem key={i} text={text} isCompleted={completed} />) }
       </TodoList>
       <TodoCreateButton />
     </div>

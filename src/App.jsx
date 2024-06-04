@@ -4,7 +4,7 @@ import { TodoSearchForm } from './TodoSearchForm';
 import { TodoAddForm } from './TodoAddForm';
 import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
-import { TodoCreateButton } from './TodoCreateButton';
+import { TodoOpenAddFormButton } from './TodoOpenAddFormButton';
 
 import './App.css';
 
@@ -38,7 +38,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <TodoAddForm />
+      <TodoAddForm className="responsiveForm" />
 
       <TodoCounter
         completedTodos={completedTodos}
@@ -49,13 +49,12 @@ const App = () => {
           setSearchValue={setSearchValue}
         />
         <TodoAddForm />
-        <TodoCreateButton>Add Todo</TodoCreateButton>
       </TodoCounter>
 
       <TodoList>
         {filteredTodos.map(({ text, completed }, i) => <TodoItem key={i} text={text} isCompleted={completed} />) }
       </TodoList>
-      <TodoCreateButton />
+      <TodoOpenAddFormButton />
     </div>
   );
 }

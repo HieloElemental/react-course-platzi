@@ -120,6 +120,7 @@
   right: -12px;
 }
 
+.Icon.AddIcon,
 .Icon.Button {
   display: none;
   background: var(--color-royal-blue);
@@ -135,7 +136,8 @@
   display: none;
 }
 
-.App .TodoCounter .Icon.Button {
+.App .TodoCounter .Icon.AddIcon,
+.App .responsiveForm .Icon.AddIcon {
   display: flex;
   border-radius: 10px;
   color: var(--color-magnolia);
@@ -143,6 +145,7 @@
   font-size: 16px;
   gap: 4px;
   padding-right: 10px;
+  margin: auto;
 }
 
 .Button svg {
@@ -242,6 +245,14 @@
     align-items: center;
     flex-direction: column;
     transition: 1s;
+  }
+
+  .App > .TodoAddForm.active {
+    left: 0;
+  }
+
+  .App > .TodoAddForm .Icon.AddIcon {
+    display: flex;
   }
 
   .App .TodoAddForm .Icon.CloseIcon {

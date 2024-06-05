@@ -34,7 +34,11 @@ const TodoCounter = ({ completedTodos, totalTodos, children }) => {
           />
         </svg>
         <h1>
-          {completedTodos} of {totalTodos} TODOS Completed
+          {
+            completedTodos === totalTodos ?
+              "All the todos are done" :
+              `${completedTodos} of ${totalTodos} TODOS Completed`
+          }
         </h1>
       </div>
       {children}

@@ -10,18 +10,22 @@ import './App.css';
 
 const defaultTodos = [
   {
+    id: 1,
     text: 'Cut Onions',
     completed: true
   },
   {
+    id: 2,
     text: 'Cut Potatoes',
     completed: false
   },
   {
+    id: 3,
     text: 'Cut Tomatoes',
     completed: false
   },
   {
+    id: 4,
     text: 'Cut Carrots',
     completed: false
   }
@@ -35,6 +39,21 @@ const App = () => {
   const totalTodos = todos.length;
   const filteredTodos = todos.filter(todo => !!todo.text.toLowerCase().includes(searchValue.toLowerCase()));
   console.log(filteredTodos);
+
+  const onCompleteHandler = (todoIndex) => {
+    const newTodos = [...todos];
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+    setTodos(newTodos);
+  }
+
+  const onDeleteHandler = (todoIndex) => {
+    const newTodos = [...todos];
+    newTodos.splice(todoIndex, 1);
+    newTodos.forEach((todo, i) => {
+      newTodos[i].id = i;
+    });
+    setTodos(newTodos);
+  }
 
   return (
     <div className="App">
@@ -52,7 +71,18 @@ const App = () => {
       </TodoCounter>
 
       <TodoList>
-        {filteredTodos.map(({ text, completed }, i) => <TodoItem key={i} text={text} isCompleted={completed} />) }
+        {
+          filteredTodos.map(({ text, completed, id }, i) => (
+            <TodoItem
+              key={i}
+              index={i}
+              text={text}
+              isCompleted={completed}
+              onComplete={() => { onCompleteHandler(id) }}
+              onDelete={() => { onDeleteHandler(id) }}
+            />
+          ))
+        }
       </TodoList>
       <TodoOpenAddFormButton />
     </div>

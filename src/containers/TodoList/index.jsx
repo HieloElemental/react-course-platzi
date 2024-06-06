@@ -1,3 +1,5 @@
+import "./index.css"
+
 const TodoList = ({ children }) => {
   return (
     <div className="TodoList">

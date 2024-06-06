@@ -1,0 +1,25 @@
+.App .Todo {
+  background: rgba(var(--color-midnight-blue-rgb), .9);
+  list-style: none;
+  margin: 0 24px 20px;
+  color: var(--color-magnolia);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.App .Todo.Todo-checked {
+  text-decoration: line-through;
+}
+
+.App .Todo .Icon svg {
+  fill: var(--color-magnolia);
+}
+
+.App .Todo.Todo-checked .Icon-check {
+  background: var(--color-atomic-tangerine);
+}
+
+.App .Todo.Todo-checked .Icon-check svg {
+  fill: var(--color-chocolate-cosmos);
+}

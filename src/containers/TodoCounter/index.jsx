@@ -1,3 +1,5 @@
+import "./index.css"
+
 const TodoCounter = ({ completedTodos, totalTodos, children }) => { 
   const progress = (completedTodos / totalTodos)*100;
   const size = 250;

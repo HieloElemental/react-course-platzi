@@ -1,0 +1,52 @@
+.App .TodoCounter {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 32px 23px;
+}
+
+.App .graphic {
+  width: 100%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 20px;
+}
+
+.App .graphic h1 {
+  display: block;
+  position: absolute;
+  text-align: center;
+  top: 105px;
+  max-width: 90%;
+  background: var(--color-midnight-blue);
+  color: var(--color-magnolia);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.App .graphic svg * {
+  transition: 1s ease-in-out;
+}
+
+.App .graphic svg .fg {
+  stroke: var(--color-royal-blue);
+}
+
+@media screen and (max-width: 580px) {
+  .App .TodoCounter h1 {
+    top: 90px;
+    max-width: 90%;
+  }
+
+  .App .TodoCounter {
+    width: 90%;
+  }
+
+  .App .TodoCounter .Icon.Button {
+    display: none;
+  }
+}

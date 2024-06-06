@@ -1,4 +1,4 @@
-import { TodoIcon } from "./TodoIcon";
+import { TodoIcon } from "../TodoIcon";
 
 const TodoCreateButton = ({children}) => {
   return <button className='Icon Icon-add' onClick={(event) => {

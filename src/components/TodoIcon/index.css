@@ -1,0 +1,64 @@
+.App .Icon {
+  border-radius: 50%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  fill: var(--color-magnolia);
+  cursor: pointer;
+}
+
+.App .Icon-check {
+  background: #7da300;
+  position: relative;
+  left: -12px;
+}
+
+.App .Icon-close {
+  background: var(--color-chocolate-cosmos);
+  position: relative;
+  right: -12px;
+  top: -20px;
+}
+
+.App .TodoCounter .Icon.Icon-add,
+.App .responsiveForm .Icon.Icon-add {
+  display: flex;
+  border-radius: 10px;
+  color: var(--color-magnolia);
+  font-weight: bold;
+  font-size: 16px;
+  gap: 4px;
+  padding-right: 10px;
+  margin: auto;
+}
+
+.Button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.Icon.Icon-add,
+.Icon.Button {
+  display: none;
+  background: var(--color-royal-blue);
+  box-shadow: 2px 2px 5px var(--color-chocolate-cosmos);
+  border: none;
+}
+
+@media screen and (max-width: 580px) {
+  .Button svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .Icon.Button {
+    display: block;
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    bottom: 40px;
+    right: 10px;
+    z-index: 10;
+  }
+}

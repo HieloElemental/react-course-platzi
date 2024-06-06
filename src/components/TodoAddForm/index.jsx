@@ -1,5 +1,7 @@
-import { TodoCreateButton } from "./TodoCreateButton";
-import { TodoIcon } from "./TodoIcon";
+import { TodoCreateButton } from "../TodoCreateButton";
+import { TodoIcon } from "../TodoIcon";
+
+import "./index.css"
 
 const TodoAddForm = ({className}) => {
   return (

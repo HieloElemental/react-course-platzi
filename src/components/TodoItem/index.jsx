@@ -1,5 +1,6 @@
+import { TodoIcon } from "../TodoIcon";
 
-import { TodoIcon } from "./TodoIcon";
+import "./index.css";
 
 const TodoItem = ({ text, isCompleted, onComplete, onDelete }) => {
   return (

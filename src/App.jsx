@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { TodoCounter } from './TodoCounter';
-import { TodoSearchForm } from './TodoSearchForm';
-import { TodoAddForm } from './TodoAddForm';
-import { TodoList } from './TodoList';
-import { TodoItem } from './TodoItem';
-import { TodoOpenAddFormButton } from './TodoOpenAddFormButton';
-import { useLocalStorage } from './useLocalStorage';
+import { TodoCounter } from './containers/TodoCounter';
+import { TodoSearchForm } from './components/TodoSearchForm';
+import { TodoAddForm } from './components/TodoAddForm';
+import { TodoList } from './containers/TodoList';
+import { TodoItem } from './components/TodoItem';
+import { TodoOpenAddFormButton } from './components/TodoOpenAddFormButton';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 import './App.css';
 

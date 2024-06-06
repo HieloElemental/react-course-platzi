@@ -1,0 +1,24 @@
+.App .TodoList {
+  width: 320px;
+  color: var(--color-magnolia);
+}
+
+.App .TodoList h1 {
+  font-weight: bolder;
+  font-size: 50px;
+  margin-top: 0;
+  margin-bottom: 40px;
+  text-align: center;
+  text-shadow: 2px 2px 2px var(--color-chocolate-cosmos);
+}
+
+.App .TodoList ul{
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 580px) {
+  .App .TodoList {
+    width: 100%;
+  }
+}

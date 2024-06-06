@@ -28,7 +28,7 @@ const TodoCounter = ({ completedTodos, totalTodos, children }) => {
             stroke="#5394fd"
             strokeWidth={strokeWidth}
             strokeDasharray={circumference}
-            strokeDashoffset={offset}
+            strokeDashoffset={offset || 0}
             strokeLinecap="round"
             transform={`rotate(-90 ${size / 2} ${size / 2})`}
           />

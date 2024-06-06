@@ -8,6 +8,7 @@ import { TodoOpenAddFormButton } from './TodoOpenAddFormButton';
 
 import './App.css';
 
+/*
 const defaultTodos = [
   {
     id: 0,
@@ -31,19 +32,30 @@ const defaultTodos = [
   }
 ]
 
+localStorage.setItem('TODO_SITE_V1', JSON.stringify(defaultTodos));
+localStorage.removeItem('TODO_SITE_V1');
+*/
+
 const App = () => {
-  const [todos, setTodos] = useState(defaultTodos);
+  let parsedTodos = JSON.parse(localStorage.getItem('TODO_SITE_V1')) || [];
+  localStorage.setItem('TODO_SITE_V1', JSON.stringify(parsedTodos));
+
+  const [todos, setTodos] = useState(parsedTodos);
   const [searchValue, setSearchValue] = useState('');
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
   const filteredTodos = todos.filter(todo => !!todo.text.toLowerCase().includes(searchValue.toLowerCase()));
-  console.log(filteredTodos);
+
+  const onTodoChange = (newTodos) => {
+    localStorage.setItem('TODO_SITE_V1', JSON.stringify(newTodos));
+    setTodos(newTodos);
+  }
 
   const onCompleteHandler = (todoIndex) => {
     const newTodos = [...todos];
     newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
-    setTodos(newTodos);
+    onTodoChange(newTodos);
   }
 
   const onDeleteHandler = (todoIndex) => {
@@ -52,7 +64,7 @@ const App = () => {
     newTodos.forEach((todo, i) => {
       newTodos[i].id = i;
     });
-    setTodos(newTodos);
+    onTodoChange(newTodos);
   }
 
   return (

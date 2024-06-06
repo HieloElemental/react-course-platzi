@@ -5,6 +5,7 @@ import { TodoAddForm } from './TodoAddForm';
 import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 import { TodoOpenAddFormButton } from './TodoOpenAddFormButton';
+import { useLocalStorage } from './useLocalStorage';
 
 import './App.css';
 
@@ -37,25 +38,17 @@ localStorage.removeItem('TODO_SITE_V1');
 */
 
 const App = () => {
-  let parsedTodos = JSON.parse(localStorage.getItem('TODO_SITE_V1')) || [];
-  localStorage.setItem('TODO_SITE_V1', JSON.stringify(parsedTodos));
-
-  const [todos, setTodos] = useState(parsedTodos);
+  const [todos, setTodos] = useLocalStorage({ itemName: 'TODO_SITE_V1', initialValue: []});
   const [searchValue, setSearchValue] = useState('');
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
   const filteredTodos = todos.filter(todo => !!todo.text.toLowerCase().includes(searchValue.toLowerCase()));
 
-  const onTodoChange = (newTodos) => {
-    localStorage.setItem('TODO_SITE_V1', JSON.stringify(newTodos));
-    setTodos(newTodos);
-  }
-
   const onCompleteHandler = (todoIndex) => {
     const newTodos = [...todos];
     newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
-    onTodoChange(newTodos);
+    setTodos(newTodos);
   }
 
   const onDeleteHandler = (todoIndex) => {
@@ -64,7 +57,7 @@ const App = () => {
     newTodos.forEach((todo, i) => {
       newTodos[i].id = i;
     });
-    onTodoChange(newTodos);
+    setTodos(newTodos);
   }
 
   return (

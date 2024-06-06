@@ -10,22 +10,22 @@ import './App.css';
 
 const defaultTodos = [
   {
-    id: 1,
+    id: 0,
     text: 'Cut Onions',
     completed: true
   },
   {
-    id: 2,
+    id: 1,
     text: 'Cut Potatoes',
     completed: false
   },
   {
-    id: 3,
+    id: 2,
     text: 'Cut Tomatoes',
     completed: false
   },
   {
-    id: 4,
+    id: 3,
     text: 'Cut Carrots',
     completed: false
   }

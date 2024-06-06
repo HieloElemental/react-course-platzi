@@ -1,9 +1,9 @@
-import PlusIcon from './PlusIcon';
+import { TodoIcon } from "./TodoIcon";
 
 const TodoCreateButton = ({children}) => {
-  return <button className='Icon AddIcon' onClick={(event) => {
+  return <button className='Icon Icon-add' onClick={(event) => {
     console.log("clicked")
-  }}><span className='Icon PlusIcon'><PlusIcon /></span>{ children }</button>
+  }}> <TodoIcon type="plus"/> { children }</button>
 }
 
 export { TodoCreateButton };

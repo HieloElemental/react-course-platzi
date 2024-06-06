@@ -96,17 +96,17 @@
   cursor: pointer;
 }
 
-.App .CheckIcon {
+.App .Icon-check {
   background: #7da300;
   position: relative;
   left: -12px;
 }
 
-.App .Todo.Todo-checked .CheckIcon {
+.App .Todo.Todo-checked .Icon-check {
   background: var(--color-atomic-tangerine);
 }
 
-.App .Todo.Todo-checked .CheckIcon svg {
+.App .Todo.Todo-checked .Icon-check svg {
   fill: var(--color-chocolate-cosmos);
 }
 
@@ -114,13 +114,13 @@
   fill: var(--color-magnolia);
 }
 
-.App .CloseIcon {
+.App .Icon-close {
   background: var(--color-chocolate-cosmos);
   position: relative;
   right: -12px;
 }
 
-.Icon.AddIcon,
+.Icon.Icon-add,
 .Icon.Button {
   display: none;
   background: var(--color-royal-blue);
@@ -128,7 +128,7 @@
   border: none;
 }
 
-.App .TodoAddForm .Icon.CloseIcon {
+.App .TodoAddForm .Icon.Icon-close {
   display: none;
 }
 
@@ -136,8 +136,8 @@
   display: none;
 }
 
-.App .TodoCounter .Icon.AddIcon,
-.App .responsiveForm .Icon.AddIcon {
+.App .TodoCounter .Icon.Icon-add,
+.App .responsiveForm .Icon.Icon-add {
   display: flex;
   border-radius: 10px;
   color: var(--color-magnolia);
@@ -183,7 +183,7 @@
   color: rgba(var(--color-atomic-tangerine-rgb), .3);
 }
 
-.TodoAddForm .CloseIcon {
+.TodoAddForm .Icon-close {
   position: relative;
   top: 0;
   right: 0;
@@ -251,11 +251,11 @@
     left: 0;
   }
 
-  .App > .TodoAddForm .Icon.AddIcon {
+  .App > .TodoAddForm .Icon.Icon-add {
     display: flex;
   }
 
-  .App .TodoAddForm .Icon.CloseIcon {
+  .App .TodoAddForm .Icon.Icon-close {
     display: flex;
     position: fixed;
     top: 80px;

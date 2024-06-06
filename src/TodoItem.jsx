@@ -1,12 +1,12 @@
-import CheckMarkIcon from "./CheckMarkIcon";
-import CloseIcon from './CloseIcon';
 
-const TodoItem = ({ text, isCompleted,onComplete, onDelete }) => {
+import { TodoIcon } from "./TodoIcon";
+
+const TodoItem = ({ text, isCompleted, onComplete, onDelete }) => {
   return (
     <li className={`Todo ${isCompleted && "Todo-checked"}`}>
-      <span className="Icon CheckIcon" onClick={onComplete}><CheckMarkIcon /></span>
+      <TodoIcon type="check" onClick={onComplete}/>
       <p>{ text }</p>
-      <span className="Icon CloseIcon" onClick={onDelete}><CloseIcon /></span>
+      <TodoIcon type="close" onClick={onDelete}/>
     </li>
   );
 }

@@ -1,5 +1,5 @@
-import CloseIcon from "./CloseIcon";
 import { TodoCreateButton } from "./TodoCreateButton";
+import { TodoIcon } from "./TodoIcon";
 
 const TodoAddForm = ({className}) => {
   return (
@@ -11,7 +11,7 @@ const TodoAddForm = ({className}) => {
         </label>
         <input type="text" placeholder="Cut Carrots" />
         <TodoCreateButton>Add Todo</TodoCreateButton>
-        <span className="Icon CloseIcon"><CloseIcon /></span>
+        <TodoIcon type="close"/>
       </div>
     </div>
   )

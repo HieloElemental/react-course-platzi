@@ -9,36 +9,14 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 
 import './App.css';
 
-/*
-const defaultTodos = [
-  {
-    id: 0,
-    text: 'Cut Onions',
-    completed: true
-  },
-  {
-    id: 1,
-    text: 'Cut Potatoes',
-    completed: false
-  },
-  {
-    id: 2,
-    text: 'Cut Tomatoes',
-    completed: false
-  },
-  {
-    id: 3,
-    text: 'Cut Carrots',
-    completed: false
-  }
-]
-
-localStorage.setItem('TODO_SITE_V1', JSON.stringify(defaultTodos));
-localStorage.removeItem('TODO_SITE_V1');
-*/
-
 const App = () => {
-  const [todos, setTodos] = useLocalStorage({ itemName: 'TODO_SITE_V1', initialValue: []});
+  const {
+    item: todos,
+    setItem: setTodos,
+    isLoading,
+    error
+  } = useLocalStorage({ itemName: 'TODO_SITE_V1', initialValue: [] });
+  
   const [searchValue, setSearchValue] = useState('');
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
@@ -76,6 +54,10 @@ const App = () => {
       </TodoCounter>
 
       <TodoList>
+        {isLoading && <p>loading</p>}
+        {error && <p>Ha ocurrido un error inesperado</p>}
+        {(!isLoading && filteredTodos.length === 0) && <p>Here are no todos.</p>}
+
         {
           filteredTodos.map(({ text, completed, id }, i) => (
             <TodoItem

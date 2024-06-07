@@ -1,16 +1,29 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const useLocalStorage = ({ itemName, initialValue }) => {
-  let initialItem = localStorage.getItem(itemName);
+  const [item, setItem] = useState(initialValue);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
   
-  if (!initialItem) { 
-    initialItem = initialValue;
-    localStorage.setItem(itemName, JSON.stringify(initialValue));
-  } else {
-    initialItem = JSON.parse(initialItem);
-  }
+  useEffect(() => {
+    setTimeout(() => {
+      try {
+        let initialItem = localStorage.getItem(itemName);
+    
+        if (!initialItem) {
+          initialItem = initialValue;
+          localStorage.setItem(itemName, JSON.stringify(initialValue));
+        } else {
+          initialItem = JSON.parse(initialItem);
+        }
+      } catch (error) {
+        setError(error)
+      }
 
-  const [item, setItem] = useState(initialItem);
+      setIsLoading(false);
+    }, 2000);
+  }, [initialValue, itemName]);
+
 
   const onItemChange = (newItem) => {
     localStorage.setItem(itemName, JSON.stringify(newItem));
@@ -18,7 +31,12 @@ const useLocalStorage = ({ itemName, initialValue }) => {
     return newItem;
   }
 
-  return [item, onItemChange];
+  return {
+    item,
+    onItemChange,
+    isLoading,
+    error,
+  };
 }
 
 export { useLocalStorage }

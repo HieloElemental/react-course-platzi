@@ -1,4 +1,8 @@
-.App > .TodoAddForm {
+.TodoAddForm {
+  color: var(--color-magnolia);
+}
+
+.TodoModal .TodoAddForm {
   display: none;
 }
 
@@ -17,7 +21,7 @@
     display: none;
   }
 
-  .App > .TodoAddForm {
+  .TodoModal .TodoAddForm {
     display: flex;
     z-index: 60;
     position: fixed;
@@ -26,22 +30,22 @@
     background: rgba(var(--color-chocolate-cosmos-rgb), .5);
     backdrop-filter: blur(5px);
     top: 0;
-    left: -150vw;
+    left: 0;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     transition: 1s;
   }
 
-  .App > .TodoAddForm.active {
+  .TodoModal .TodoAddForm.active {
     left: 0;
   }
 
-  .App > .TodoAddForm .Icon.Icon-add {
+  .TodoModal .TodoAddForm .Icon.Icon-add {
     display: flex;
   }
 
-  .App .TodoAddForm .Icon.Icon-close {
+  .TodoModal .TodoAddForm .Icon.Icon-close {
     display: flex;
     position: fixed;
     top: 80px;

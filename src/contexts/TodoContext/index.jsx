@@ -11,6 +11,7 @@ const TodoProvider = ({children}) => {
     error
   } = useLocalStorage({ itemName: 'TODO_SITE_V1', initialValue: [] });
   
+  const [isTodoModalOpen, setIsTodoModalOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
@@ -32,6 +33,16 @@ const TodoProvider = ({children}) => {
     setTodos(newTodos);
   }
 
+  const onAddHandler = (todoText) => {
+    const newTodos = [...todos];
+    newTodos.push({
+      id: todos.length,
+      completed: false,
+      text: todoText
+    });
+    setTodos(newTodos)
+  }
+
   return (
     <TodoContext.Provider value={{
       isLoading,
@@ -42,7 +53,10 @@ const TodoProvider = ({children}) => {
       searchValue,
       setSearchValue,
       onCompleteHandler,
-      onDeleteHandler
+      onDeleteHandler,
+      onAddHandler,
+      isTodoModalOpen,
+      setIsTodoModalOpen
     }}>
       { children }
     </TodoContext.Provider>

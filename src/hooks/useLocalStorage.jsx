@@ -6,23 +6,21 @@ const useLocalStorage = ({ itemName, initialValue }) => {
   const [error, setError] = useState(false);
   
   useEffect(() => {
-    setTimeout(() => {
-      try {
-        let initialItem = localStorage.getItem(itemName);
-    
-        if (!initialItem) {
-          initialItem = initialValue;
-          localStorage.setItem(itemName, JSON.stringify(initialValue));
-        } else {
-          initialItem = JSON.parse(initialItem);
-          setItem(initialItem)
-        }
-      } catch (error) {
-        setError(error)
+    try {
+      let initialItem = localStorage.getItem(itemName);
+  
+      if (!initialItem) {
+        initialItem = initialValue;
+        localStorage.setItem(itemName, JSON.stringify(initialValue));
+      } else {
+        initialItem = JSON.parse(initialItem);
+        setItem(initialItem)
       }
+    } catch (error) {
+      setError(error)
+    }
 
-      setIsLoading(false);
-    }, 5000);
+    setIsLoading(false);
   }, [initialValue, itemName]);
 
 

@@ -11,15 +11,20 @@ import { TodoList } from './containers/TodoList';
 import { TodoLoading } from './components/TodoLoading';
 import { TodoOpenAddFormButton } from './components/TodoOpenAddFormButton';
 import { TodoSearchForm } from './components/TodoSearchForm';
+import { TodoModal } from './components/TodoModal';
 
 import './App.css';
 
 const App = () => {
-  const { isLoading, error, filteredTodos, onCompleteHandler, onDeleteHandler } = useContext(TodoContext);
+  const { isLoading, error, filteredTodos, onCompleteHandler, onDeleteHandler, isTodoModalOpen } = useContext(TodoContext);
 
   return (
     <div className="App">
-      <TodoAddForm className="responsiveForm" />
+      {isTodoModalOpen &&
+      <TodoModal>
+        <TodoAddForm className="responsiveForm" />
+      </TodoModal>
+      }
 
       <TodoCounter>
         <TodoSearchForm

@@ -1,18 +1,22 @@
-import { useState } from 'react';
-import { TodoCounter } from './containers/TodoCounter';
-import { TodoSearchForm } from './components/TodoSearchForm';
-import { TodoAddForm } from './components/TodoAddForm';
-import { TodoList } from './containers/TodoList';
-import { TodoItem } from './components/TodoItem';
-import { TodoOpenAddFormButton } from './components/TodoOpenAddFormButton';
 import { useLocalStorage } from './hooks/useLocalStorage';
+import { useState } from 'react';
+
+import { TodoAddForm } from './components/TodoAddForm';
+import { TodoCounter } from './containers/TodoCounter';
+import { TodoEmptyTodos } from './components/TodoEmptyTodos';
+import { TodoError } from './components/TodoError';
+import { TodoItem } from './components/TodoItem';
+import { TodoList } from './containers/TodoList';
+import { TodoLoading } from './components/TodoLoading';
+import { TodoOpenAddFormButton } from './components/TodoOpenAddFormButton';
+import { TodoSearchForm } from './components/TodoSearchForm';
 
 import './App.css';
 
 const App = () => {
   const {
     item: todos,
-    setItem: setTodos,
+    onItemChange: setTodos,
     isLoading,
     error
   } = useLocalStorage({ itemName: 'TODO_SITE_V1', initialValue: [] });
@@ -21,7 +25,7 @@ const App = () => {
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
-  const filteredTodos = todos.filter(todo => !!todo.text.toLowerCase().includes(searchValue.toLowerCase()));
+  const filteredTodos = searchValue ? todos.filter(todo => !!todo.text.toLowerCase().includes(searchValue.toLowerCase())) : todos;
 
   const onCompleteHandler = (todoIndex) => {
     const newTodos = [...todos];
@@ -54,9 +58,9 @@ const App = () => {
       </TodoCounter>
 
       <TodoList>
-        {isLoading && <p>loading</p>}
-        {error && <p>Ha ocurrido un error inesperado</p>}
-        {(!isLoading && filteredTodos.length === 0) && <p>Here are no todos.</p>}
+        {isLoading && <TodoLoading />}
+        {error && <TodoError />}
+        {(!isLoading && filteredTodos.length === 0) && <TodoEmptyTodos />}
 
         {
           filteredTodos.map(({ text, completed, id }, i) => (

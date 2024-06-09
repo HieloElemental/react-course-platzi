@@ -15,13 +15,14 @@ const useLocalStorage = ({ itemName, initialValue }) => {
           localStorage.setItem(itemName, JSON.stringify(initialValue));
         } else {
           initialItem = JSON.parse(initialItem);
+          setItem(initialItem)
         }
       } catch (error) {
         setError(error)
       }
 
       setIsLoading(false);
-    }, 2000);
+    }, 5000);
   }, [initialValue, itemName]);
 
 

@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+
 import { TodoContext } from './contexts/TodoContext';
 
 import { TodoAddForm } from './components/TodoAddForm';
@@ -11,58 +13,41 @@ import { TodoOpenAddFormButton } from './components/TodoOpenAddFormButton';
 import { TodoSearchForm } from './components/TodoSearchForm';
 
 import './App.css';
-import { TodoProvider } from './contexts/TodoContext';
 
 const App = () => {
-  
+  const { isLoading, error, filteredTodos, onCompleteHandler, onDeleteHandler } = useContext(TodoContext);
 
   return (
-    <TodoProvider>
-      <div className="App">
-        <TodoAddForm className="responsiveForm" />
+    <div className="App">
+      <TodoAddForm className="responsiveForm" />
 
-        <TodoCounter
-          // completedTodos={completedTodos}
-          // totalTodos={totalTodos}
-        >
-          <TodoSearchForm
-            // searchValue={searchValue}
-            // setSearchValue={setSearchValue}
-          />
-          <TodoAddForm />
-        </TodoCounter>
+      <TodoCounter>
+        <TodoSearchForm
+          // searchValue={searchValue}
+          // setSearchValue={setSearchValue}
+        />
+        <TodoAddForm />
+      </TodoCounter>
+        <TodoList>
+          {isLoading && <TodoLoading />}
+          {error && <TodoError />}
+          {(!isLoading && filteredTodos.length === 0) && <TodoEmptyTodos />}
 
-        <TodoContext.Consumer>
-          {({
-            isLoading,
-            error,
-            filteredTodos,
-            onCompleteHandler,
-            onDeleteHandler,
-          }) => (
-            <TodoList>
-              {isLoading && <TodoLoading />}
-              {error && <TodoError />}
-              {(!isLoading && filteredTodos.length === 0) && <TodoEmptyTodos />}
-
-              {
-                filteredTodos.map(({ text, completed, id }, i) => (
-                  <TodoItem
-                    key={i}
-                    index={i}
-                    text={text}
-                    isCompleted={completed}
-                    onComplete={() => { onCompleteHandler(id) }}
-                    onDelete={() => { onDeleteHandler(id) }}
-                  />
-                ))
-              }
-            </TodoList>
-          )}
-        </TodoContext.Consumer>
-        <TodoOpenAddFormButton />
-      </div>
-    </TodoProvider>
+          {
+            filteredTodos.map(({ text, completed, id }, i) => (
+              <TodoItem
+                key={i}
+                index={i}
+                text={text}
+                isCompleted={completed}
+                onComplete={() => { onCompleteHandler(id) }}
+                onDelete={() => { onDeleteHandler(id) }}
+              />
+            ))
+          }
+        </TodoList>
+      <TodoOpenAddFormButton />
+    </div>
   );
 }
 

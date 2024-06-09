@@ -1,6 +1,12 @@
+import { useContext } from "react";
+
+import { TodoContext } from "../../contexts/TodoContext";
+
 import "./index.css"
 
-const TodoCounter = ({ completedTodos, totalTodos, children }) => { 
+const TodoCounter = ({ children }) => { 
+  const { completedTodos, totalTodos } = useContext(TodoContext);
+
   const progress = (completedTodos / totalTodos)*100;
   const size = 250;
   const strokeWidth = 20;

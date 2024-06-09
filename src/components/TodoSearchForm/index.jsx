@@ -1,4 +1,10 @@
-const TodoSearchForm = ({searchValue, setSearchValue}) => { 
+import { useContext } from "react";
+
+import { TodoContext } from "../../contexts/TodoContext";
+
+const TodoSearchForm = () => { 
+  const { searchValue, setSearchValue } = useContext(TodoContext);
+
   return (
     <div className="TodoForm">
       <label htmlFor="">Search:</label>
